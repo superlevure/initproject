@@ -6,22 +6,29 @@ import os
 import sys
 import venv
 import shutil
+import argparse
 
 
 if __name__ == "__main__":
 
+    parser = argparse.ArgumentParser(description="Initiate a Python module.")
+    parser.add_argument("project_name", help="Name of the project")
+    parser.add_argument(
+        "-s", "--simple_project", help="Simple project", action="store_false"
+    )
+    args = parser.parse_args()
+
     MODULE_FOLDER = os.path.dirname(os.path.abspath(__file__))
     EXECUTION_FOLDER = os.getcwd()
 
-    PROJECT_NAME = sys.argv[1]
     # Project's folder creation
     try:
-        os.mkdir(PROJECT_NAME)
+        os.mkdir(args.project_name)
     except FileExistsError:
         sys.exit("A folder with the project's name already exists")
 
     # Enter the project's folder
-    os.chdir(PROJECT_NAME)
+    os.chdir(args.project_name)
 
     # Git init
     os.system("git init")
@@ -38,31 +45,34 @@ if __name__ == "__main__":
 
     shutil.copyfile(
         MODULE_FOLDER + "/.vscode/settings.json",
-        EXECUTION_FOLDER + "/" + PROJECT_NAME + "/.vscode/settings.json",
+        EXECUTION_FOLDER + "/" + args.project_name + "/.vscode/settings.json",
     )
 
     shutil.copyfile(
         MODULE_FOLDER + "/" + "initproject.code-workspace",
-        EXECUTION_FOLDER + "/" + PROJECT_NAME + "/" + PROJECT_NAME + ".code-workspace",
+        EXECUTION_FOLDER
+        + "/"
+        + args.project_name
+        + "/"
+        + args.project_name
+        + ".code-workspace",
     )
 
     # Create git ignore
     shutil.copyfile(
         MODULE_FOLDER + "/" + ".gitignore",
-        EXECUTION_FOLDER + "/" + PROJECT_NAME + "/.gitignore",
+        EXECUTION_FOLDER + "/" + args.project_name + "/.gitignore",
     )
 
     # Create folder tree and files
-    os.mkdir(PROJECT_NAME)
-    os.mkdir("tests")
-    os.mkdir("docs")
 
-    if simple_project:
-        with open(PROJECT_NAME + ".py", "w") as file:
+    if args.simple_project:
+        with open(args.project_name + ".py", "w") as file:
             pass
     else:
-        with open(PROJECT_NAME + "/__init__.py", "w") as file:
+        os.mkdir(args.project_name)
+        os.mkdir("tests")
+        os.mkdir("docs")
+        with open(args.project_name + "/__init__.py", "w") as file:
             pass
 
-    with open(PROJECT_NAME + "/__init__.py", "w") as file:
-        pass
