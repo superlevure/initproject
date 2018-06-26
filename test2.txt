@@ -1,8 +1,0 @@
-la meuf elle a pas de champoing 
-non mais allo quoi  
-
-
-test rebase - local
-
-test rebase - remote
->>>>>>> 165e43d4f15ecd393f3ce6b5d0568066c710f5fd
