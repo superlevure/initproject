@@ -3,7 +3,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+specs.txt
 
 # Vscode
 *.code-workspace
