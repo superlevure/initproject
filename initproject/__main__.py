@@ -21,6 +21,7 @@ if __name__ == "__main__":
     MODULE_FOLDER = os.path.dirname(os.path.abspath(__file__))
     EXECUTION_FOLDER = os.getcwd()
 
+    print(MODULE_FOLDER)
     # Project's folder creation
     try:
         os.mkdir(args.project_name)
@@ -44,12 +45,12 @@ if __name__ == "__main__":
     os.mkdir(".vscode")
 
     shutil.copyfile(
-        MODULE_FOLDER + "/.vscode/settings.json",
+        MODULE_FOLDER + "/include/settings.json",
         EXECUTION_FOLDER + "/" + args.project_name + "/.vscode/settings.json",
     )
 
     shutil.copyfile(
-        MODULE_FOLDER + "/" + "initproject.code-workspace",
+        MODULE_FOLDER + "/include/initproject.code-workspace",
         EXECUTION_FOLDER
         + "/"
         + args.project_name
@@ -60,7 +61,7 @@ if __name__ == "__main__":
 
     # Create git ignore
     shutil.copyfile(
-        MODULE_FOLDER + "/" + ".gitignore",
+        MODULE_FOLDER + "/include/.gitignore",
         EXECUTION_FOLDER + "/" + args.project_name + "/.gitignore",
     )
 
