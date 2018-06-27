@@ -1,9 +1,0 @@
-initprojetc PROJECT_NAME
-
-/ mkdir PROJECT_NAME
-/ git init
-/ python3|python2 -m venv .env
-mkdir subfolders
-/ create vscode workspace 
-/ install black 
-/ install pylint
