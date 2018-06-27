@@ -45,12 +45,12 @@ if __name__ == "__main__":
     os.mkdir(".vscode")
 
     shutil.copyfile(
-        MODULE_FOLDER + "/initproject/include/settings.json",
+        MODULE_FOLDER + "/include/settings.json",
         EXECUTION_FOLDER + "/" + args.project_name + "/.vscode/settings.json",
     )
 
     shutil.copyfile(
-        MODULE_FOLDER + "/initproject/include/initproject.code-workspace",
+        MODULE_FOLDER + "/include/initproject.code-workspace",
         EXECUTION_FOLDER
         + "/"
         + args.project_name
@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     # Create git ignore
     shutil.copyfile(
-        MODULE_FOLDER + "/initproject/include/.gitignore",
+        MODULE_FOLDER + "/include/.gitignore",
         EXECUTION_FOLDER + "/" + args.project_name + "/.gitignore",
     )
 
